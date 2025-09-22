@@ -12,7 +12,7 @@ from sklearn.linear_model import LinearRegression
 c = sqlite3.connect('../Exercise1/minisocial_database.sqlite')
 
 # predict time interval 0 = year, 1 = month, 2 = day
-mode = 1
+mode = 2
 
 time_unit = {
     0: "Year",
@@ -40,7 +40,6 @@ res = pd.read_sql_query(query, c)
 
 # calculate how many comments can a server handles
 single_server_capacity = res.tail(1)['c_count'].values[0] / 16
-
 # prepare the data
 res['date'] = pd.to_datetime(res['date'])
 x = np.arange(len(res)).reshape(-1, 1)
@@ -50,7 +49,7 @@ y = res['c_count'].values.reshape(-1, 1)
 model = LinearRegression()
 model.fit(x, y)
 
-# predict length
+# predict time unit length
 time_length_formats = {
     0: 3,
     1: 12 * 3,
@@ -64,6 +63,7 @@ future_y = model.predict(future_x)
 
 # prediction the amount of comments on the last time interval
 prediction = future_y[-1][-1].astype(int)
+
 # servers needed =
 # current comment * 120% / processed comment per server - servers already have
 server_needed = math.ceil(prediction * 1.2 / single_server_capacity) - 16
