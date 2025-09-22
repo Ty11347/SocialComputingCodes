@@ -14,3 +14,5 @@ query = """SELECT COUNT(*) FROM users
 c.execute(query)
 res = c.fetchall()
 print(res[0][0])
+
+conn.close()

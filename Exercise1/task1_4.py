@@ -22,3 +22,5 @@ query = """
 
 res = pd.read_sql_query(query, conn)
 print(res)
+
+conn.close()

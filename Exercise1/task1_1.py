@@ -32,6 +32,8 @@ for table_name in table_names:
 
     print("________________")
 
+    conn.close()
+
 # ---------------------------------------
 # res = c.execute("SELECT * FROM follows")
 

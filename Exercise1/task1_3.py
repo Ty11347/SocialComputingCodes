@@ -28,3 +28,5 @@ query_most_likes = """SELECT username, COUNT(reactions.reaction_type) AS likes
 
 res2 = pd.read_sql_query(query_most_likes, conn)
 # print(res2)
+
+conn.close()
