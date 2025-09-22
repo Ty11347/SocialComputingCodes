@@ -78,3 +78,5 @@ plt.grid(True)
 plt.plot(future_x, future_y, color="green", label="Predicted")
 plt.legend()
 plt.show()
+
+c.close()

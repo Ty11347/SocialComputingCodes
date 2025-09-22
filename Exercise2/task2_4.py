@@ -37,3 +37,5 @@ query = """SELECT CASE
 
 res = pd.read_sql_query(query, c)
 print(res)
+
+c.close()

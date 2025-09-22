@@ -30,3 +30,5 @@ res_last_reply = pd.read_sql_query(query_last_reply, c)['AVG(last_diff)'][0]
 
 print("Average Time of First Comment: " + str(datetime.timedelta(seconds=round(res_first_reply))))
 print("Average Time of Last Comment: " + str(datetime.timedelta(seconds=round(res_last_reply))))
+
+c.close()
